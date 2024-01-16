@@ -1,6 +1,8 @@
 export class CreateCategoriesDto {
-  id: string;
+  url: string;
+  metaTitle: string;
+  metaDescription: string;
   name: string;
   description: string;
-  imageurl: string;
+  imageUrl: string;
 }

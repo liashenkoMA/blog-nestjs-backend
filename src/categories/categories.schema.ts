@@ -3,16 +3,22 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @Schema()
 export class Categorie {
   @Prop({ unique: true })
-  id: string;
+  url: string;
 
-  @Prop({ unique: true })
+  @Prop()
+  metaTitle: string;
+
+  @Prop()
+  metaDescription: string;
+  
+  @Prop()
   name: string;
 
   @Prop()
   description: string;
 
   @Prop()
-  imageurl: string;
+  imageUrl: string;
 }
 
 export const CategorieSchema = SchemaFactory.createForClass(Categorie);
