@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { PagesService } from './pages.service';
 
 @Controller('pages')
@@ -15,8 +15,8 @@ export class PagesController {
     return this.pagesService.findAll();
   }
 
-  @Get()
-  getPage() {
-    console.log('Вывод статьи');
+  @Get(':id')
+  getPage(@Param('id') id: string) {
+    return this.pagesService.findPage(id);
   }
 }

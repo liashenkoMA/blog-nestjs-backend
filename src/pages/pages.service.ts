@@ -16,4 +16,8 @@ export class PagesService {
   findAll(): Promise<Pages[]> {
     return this.pagesModel.find().exec();
   }
+
+  findPage(id): Promise<Pages> {
+    return this.pagesModel.findOne({ url: id }).exec();
+  }
 }
