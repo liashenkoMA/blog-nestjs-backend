@@ -60,13 +60,13 @@ export class Pages {
   author: [Author];
 
   @Prop()
-  publickDate: Date;
+  publickDate: string;
 
   @Prop()
-  changeDate: Date;
+  changeDate: string;
 
   @Prop()
-  readTime: number;
+  readTime: string;
 }
 
 export const PagesSchema = SchemaFactory.createForClass(Pages);
