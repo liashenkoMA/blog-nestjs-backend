@@ -19,4 +19,8 @@ export class CategorieService {
   findAll(): Promise<Categorie[]> {
     return this.categorieModel.find().exec();
   }
+
+  find(id): Promise<Categorie> {
+    return this.categorieModel.findOne({ url: id }).exec();
+  }
 }
