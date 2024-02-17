@@ -1,27 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
-export class Tags {
-  @Prop()
-  title: string;
-
-  @Prop()
-  imageLink: string;
-}
-
-@Schema()
-export class Comments {
-  @Prop()
-  author: string;
-
-  @Prop()
-  publickDate: Date;
-
-  @Prop()
-  text: string;
-}
-
-@Schema()
 export class Author {
   @Prop()
   author: string;
@@ -51,19 +30,10 @@ export class Pages {
   text: string;
 
   @Prop()
-  tags: [Tags];
-
-  @Prop()
-  comments: [Comments];
-
-  @Prop()
   author: [Author];
 
   @Prop()
   publickDate: string;
-
-  @Prop()
-  changeDate: string;
 
   @Prop()
   readTime: string;
