@@ -20,4 +20,8 @@ export class PagesService {
   findPage(id): Promise<Pages> {
     return this.pagesModel.findOne({ url: id }).exec();
   }
+
+  findCategoryPages(id): Promise<Pages[]> {
+    return this.pagesModel.find({ categories: id }).exec();
+  }
 }

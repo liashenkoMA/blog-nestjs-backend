@@ -11,5 +11,6 @@ import { Pages, PagesSchema } from './pages.schema';
   ],
   controllers: [PagesController],
   providers: [PagesService],
+  exports: [PagesService],
 })
 export class PagesModule {}
