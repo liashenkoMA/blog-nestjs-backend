@@ -7,6 +7,7 @@ import { CategorieModule } from './categories/categories.module';
 import { PagesModule } from './pages/pages.module';
 import { TagsModule } from './tags/tags.module';
 import { BlogsModule } from './blogs/blogs.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { BlogsModule } from './blogs/blogs.module';
     PagesModule,
     TagsModule,
     BlogsModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
