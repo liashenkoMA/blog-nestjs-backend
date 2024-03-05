@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Tags } from 'src/tags/tags.schema';
 
 @Schema()
 export class Author {
@@ -10,9 +11,24 @@ export class Author {
 }
 
 @Schema()
+export class Comments {
+  @Prop()
+  author: string;
+
+  @Prop()
+  textComment: string;
+
+  @Prop()
+  publickDate: string;
+}
+
+@Schema()
 export class Pages {
   @Prop({ unique: true })
   url: string;
+
+  @Prop()
+  postImage: string;
 
   @Prop()
   metaTitle: string;
@@ -36,7 +52,19 @@ export class Pages {
   publickDate: string;
 
   @Prop()
+  changekDate: string;
+
+  @Prop()
   readTime: string;
+
+  @Prop()
+  comments: [Comments];
+
+  @Prop()
+  tags: [Tags];
+
+  @Prop()
+  popularPage: boolean;
 }
 
 export const PagesSchema = SchemaFactory.createForClass(Pages);

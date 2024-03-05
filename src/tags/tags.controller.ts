@@ -7,12 +7,12 @@ export class TagsController {
   constructor(private readonly tagsService: TagsService) {}
 
   @Post()
-  postPage(@Body() tags: CreateTagsDto) {
+  postTag(@Body() tags: CreateTagsDto) {
     return this.tagsService.create(tags);
   }
 
   @Get()
-  getPages() {
+  getTags() {
     return this.tagsService.findAll();
   }
 }
