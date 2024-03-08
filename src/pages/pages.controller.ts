@@ -10,13 +10,18 @@ export class PagesController {
     return this.pagesService.create(page);
   }
 
-  @Get()
-  getPages() {
-    return this.pagesService.findAll();
-  }
-
   @Get(':id')
   getPage(@Param('id') id: string) {
     return this.pagesService.findPage(id);
+  }
+
+  @Get()
+  getFeaturedPages() {
+    return this.pagesService.findFeatured();
+  }
+
+  @Get('tag/:id')
+  getTagPages(@Param('id') id: string) {
+    return this.pagesService.findTagPages(id);
   }
 }

@@ -23,4 +23,6 @@ export class CategorieService {
   find(id): Promise<Categorie> {
     return this.categorieModel.findOne({ url: id }).exec();
   }
+
+
 }

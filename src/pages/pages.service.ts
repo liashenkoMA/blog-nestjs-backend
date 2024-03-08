@@ -13,15 +13,19 @@ export class PagesService {
     return createPage.save();
   }
 
-  findAll(): Promise<Pages[]> {
-    return this.pagesModel.find().exec();
-  }
-
   findPage(id): Promise<Pages> {
     return this.pagesModel.findOne({ url: id }).exec();
   }
 
   findCategoryPages(id): Promise<Pages[]> {
     return this.pagesModel.find({ categories: id }).exec();
+  }
+
+  findFeatured(): Promise<Pages[]> {
+    return this.pagesModel.find({ popularPage: true }).exec();
+  }
+
+  findTagPages(id): Promise<Pages[]> {
+    return this.pagesModel.find({ tags: { $elemMatch: { url: id } } }).exec();
   }
 }

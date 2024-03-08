@@ -19,6 +19,9 @@ export class Tags {
 
   @Prop()
   imageUrl: string;
+
+  @Prop()
+  imageAlt: string;
 }
 
 export const TagSchema = SchemaFactory.createForClass(Tags);

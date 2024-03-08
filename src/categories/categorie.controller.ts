@@ -20,8 +20,13 @@ export class CategorieController {
     return this.categorieService.findAll();
   }
 
-  @Get(':id')
+  @Get('pages/:id')
   getCategoryPages(@Param('id') id: string) {
     return this.pagesService.findCategoryPages(id);
+  }
+
+  @Get(':id')
+  getCategory(@Param('id') id: string) {
+    return this.categorieService.find(id);
   }
 }

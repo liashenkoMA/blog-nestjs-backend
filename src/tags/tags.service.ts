@@ -17,4 +17,8 @@ export class TagsService {
   findAll(): Promise<Tags[]> {
     return this.tagsModel.find().exec();
   }
+
+  findTag(id) {
+    return this.tagsModel.find({ url: id }).exec();
+  }
 }

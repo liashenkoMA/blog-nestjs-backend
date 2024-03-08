@@ -19,6 +19,9 @@ export class Categorie {
 
   @Prop()
   imageUrl: string;
+  
+  @Prop()
+  imageAlt: string;
 }
 
 export const CategorieSchema = SchemaFactory.createForClass(Categorie);

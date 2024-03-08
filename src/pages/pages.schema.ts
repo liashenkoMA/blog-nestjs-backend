@@ -31,6 +31,9 @@ export class Pages {
   postImage: string;
 
   @Prop()
+  postAltImage: string;
+
+  @Prop()
   metaTitle: string;
 
   @Prop()
@@ -60,7 +63,7 @@ export class Pages {
   @Prop()
   comments: [Comments];
 
-  @Prop()
+  @Prop({ required: true })
   tags: [Tags];
 
   @Prop()

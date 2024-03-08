@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { TagsService } from './tags.service';
 import { CreateTagsDto } from './tags.schema.dto';
 
@@ -14,5 +14,10 @@ export class TagsController {
   @Get()
   getTags() {
     return this.tagsService.findAll();
+  }
+
+  @Get(':id')
+  getTag(@Param('id') id: string) {
+    return this.tagsService.findTag(id);
   }
 }
