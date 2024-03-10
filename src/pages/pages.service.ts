@@ -18,7 +18,11 @@ export class PagesService {
   }
 
   findCategoryPages(id): Promise<Pages[]> {
-    return this.pagesModel.find({ categories: id }).exec();
+    return this.pagesModel
+      .find({ categories: id })
+      .sort({ $natural: -1 })
+      .limit(6)
+      .exec();
   }
 
   findFeatured(): Promise<Pages[]> {
@@ -26,6 +30,38 @@ export class PagesService {
   }
 
   findTagPages(id): Promise<Pages[]> {
-    return this.pagesModel.find({ tags: { $elemMatch: { url: id } } }).exec();
+    return this.pagesModel
+      .find({ tags: { $elemMatch: { url: id } } })
+      .sort({ $natural: -1 })
+      .limit(6)
+      .exec();
+  }
+
+  getCountCategory(firstParam) {
+    return this.pagesModel.find({ categories: firstParam }).countDocuments();
+  }
+
+  getCountCategoryPages(firstParam, endParams) {
+    return this.pagesModel
+      .find({ categories: firstParam })
+      .skip(endParams * 6 - 6)
+      .sort({ $natural: -1 })
+      .limit(6)
+      .exec();
+  }
+
+  getCountTag(id) {
+    return this.pagesModel
+      .find({ tags: { $elemMatch: { url: id } } })
+      .countDocuments();
+  }
+
+  getCountTagPages(firstParam, endParams) {
+    return this.pagesModel
+      .find({ tags: { $elemMatch: { url: firstParam } } })
+      .skip(endParams * 6 - 6)
+      .sort({ $natural: -1 })
+      .limit(6)
+      .exec();
   }
 }
