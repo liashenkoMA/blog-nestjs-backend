@@ -19,4 +19,14 @@ export class BlogsController {
   getCount() {
     return this.blogsService.getCount();
   }
+
+  @Get('featcount')
+  getCountFeaturedPages() {
+    return this.blogsService.findCountFeatured();
+  }
+
+  @Get('featlimit/:id')
+  getLimitFeaturedPage(@Param('id') id: string) {
+    return this.blogsService.findLimitFeaturedPage(id);
+  }
 }

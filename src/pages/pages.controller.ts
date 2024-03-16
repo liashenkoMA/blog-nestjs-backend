@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { PagesService } from './pages.service';
 
 @Controller('pages')
@@ -11,8 +18,10 @@ export class PagesController {
   }
 
   @Get(':id')
-  getPage(@Param('id') id: string) {
-    return this.pagesService.findPage(id);
+  async getPage(@Param('id') id: string) {
+    const page = await this.pagesService.findPage(id);
+    if (!page) throw new NotFoundException();
+    return page;
   }
 
   @Get()

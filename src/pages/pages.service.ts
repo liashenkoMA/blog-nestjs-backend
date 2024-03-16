@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -13,8 +13,8 @@ export class PagesService {
     return createPage.save();
   }
 
-  findPage(id): Promise<Pages> {
-    return this.pagesModel.findOne({ url: id }).exec();
+  async findPage(id): Promise<Pages> {
+    return this.pagesModel.findOne({ url: id });
   }
 
   findCategoryPages(id): Promise<Pages[]> {
@@ -26,7 +26,11 @@ export class PagesService {
   }
 
   findFeatured(): Promise<Pages[]> {
-    return this.pagesModel.find({ popularPage: true }).exec();
+    return this.pagesModel
+      .find({ popularPage: true })
+      .sort({ $natural: -1 })
+      .limit(6)
+      .exec();
   }
 
   findTagPages(id): Promise<Pages[]> {

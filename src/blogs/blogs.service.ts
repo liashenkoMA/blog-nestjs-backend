@@ -20,7 +20,20 @@ export class BlogsService {
       .exec();
   }
 
+  findLimitFeaturedPage(id): Promise<Pages[]> {
+    return this.pagesModel
+      .find({ popularPage: true })
+      .sort({ $natural: -1 })
+      .skip(id * 6 - 6)
+      .limit(6)
+      .exec();
+  }
+
   getCount() {
     return this.pagesModel.countDocuments();
+  }
+
+  findCountFeatured() {
+    return this.pagesModel.find({ popularPage: true }).countDocuments();
   }
 }

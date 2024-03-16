@@ -25,7 +25,6 @@ export class CategorieController {
     return this.pagesService.findCategoryPages(id);
   }
 
-  
   @Get('pages/count/:id')
   getCategoryCountPages(@Param() param) {
     const x = param.id.split('&');
